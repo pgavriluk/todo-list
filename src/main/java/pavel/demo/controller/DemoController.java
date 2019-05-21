@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
@@ -31,9 +32,11 @@ public class DemoController {
 		return "hello";
 	}
 	// http://localhost:8080/todo-list/welcome
+	// http://localhost:8080/todo-list/welcome?user=Pavel
 	@GetMapping("welcome")
-	public String welcome(Model model) {
-		model.addAttribute("welcome", demoService.getHelloMessage("Pavel"));
+	public String welcome(@RequestParam String user, @RequestParam int age, Model model) {
+		model.addAttribute("welcome", demoService.getHelloMessage(user));
+		model.addAttribute("age", age);
 		log.info("model = {}", model);
 		// prefix + name + suffix
 		// /WEB-INF/view/welcome.jsp
