@@ -11,7 +11,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class WellAppInitializer implements WebApplicationInitializer {
+public class WebAppInitializer implements WebApplicationInitializer {
 
 	private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
 
